@@ -8,5 +8,7 @@ int main(int argc, char* argv[]) {
     Window window;
     window.init(argc, argv);
 
+    getchar();
+
     return 0;
 }

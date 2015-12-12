@@ -1,6 +1,6 @@
 CC=g++
 CFLAGS=-c -Wall
-LDFLAGS=
+LDFLAGS=-lSDL2
 
 SRC=main.cpp window.cpp
 OBJ=$(SRC:.cpp=.o)
@@ -8,7 +8,7 @@ OBJ=$(SRC:.cpp=.o)
 EXE=mini
 
 $(EXE): $(OBJ)
-	$(CC) $(LDFLAGS) $(OBJ) -o $@
+	$(CC) $(OBJ) $(LDFLAGS) -o $@
 
 .cpp.o:
 	$(CC) $(CFLAGS) $< -o $@

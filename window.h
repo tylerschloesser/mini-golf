@@ -1,4 +1,8 @@
+#include <SDL2/SDL.h>
+
 class Window {
+private:
+    SDL_Window* sdl_window;
 public:
-    void init(int argc, char* argv[]);
+    int init(int argc, char* argv[]);
 };
