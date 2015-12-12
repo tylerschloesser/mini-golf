@@ -13,7 +13,7 @@
 
 int main(int argc, char* argv[]) {
 
-    Window window(640, 480);
+    Window window(500, 500);
     assert(window.init() == 0);
 
     std::vector<glm::vec2> vertices = {
@@ -23,7 +23,7 @@ int main(int argc, char* argv[]) {
         glm::vec2(9,1)
     };
     Course course(10, 10, vertices);
-    Ball ball(5, 5);
+    Ball ball(5, 5, 1);
 
     Renderer renderer(course, ball, window);
     assert(renderer.init() == 0);

@@ -43,8 +43,10 @@ void Renderer::render() {
 
     {
         glm::vec2 position = ball.position * scale;
+        // TODO scale in both directions
+        float radius = ball.radius * scale_x;
         int x = position[0], y = position[1];
-        assert(filledCircleColor(sdl_renderer, x, y, 10, 0xFFFF00FF) == 0);
+        assert(filledCircleColor(sdl_renderer, x, y, radius, 0xFFFF00FF) == 0);
     }
 
     SDL_RenderPresent(sdl_renderer);

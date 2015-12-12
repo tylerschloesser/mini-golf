@@ -1,8 +1,11 @@
 #include <cstdio>
+#include <cassert>
 
 #include "window.h"
 
 Window::Window(int width, int height) : width(width), height(height), sdl_window(NULL) {
+    // width and height need to be the same until the ball can be properly scaled;
+    assert(width == height);
     fprintf(stderr, "Window created\n  width: %d\n  height: %d\n", width, height);
 }
 

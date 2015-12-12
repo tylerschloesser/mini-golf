@@ -7,7 +7,8 @@ class Ball {
 public:
     glm::vec2 position;
     glm::vec2 velocity;
-    Ball(int x, int y);
+    float radius;
+    Ball(int x, int y, float radius);
 };
 
 #endif // BALL_H
