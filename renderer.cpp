@@ -19,5 +19,7 @@ void Renderer::render() {
     SDL_SetRenderDrawColor(sdl_renderer, 0xff, 0xff, 0xcc, 0xff);
     SDL_RenderClear(sdl_renderer);
 
+    SDL_RenderDrawLine(sdl_renderer, 0,0,window.width, window.height);
+
     SDL_RenderPresent(sdl_renderer);
 }

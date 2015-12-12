@@ -12,8 +12,8 @@ int Window::init() {
         "test",
         SDL_WINDOWPOS_UNDEFINED,
         SDL_WINDOWPOS_UNDEFINED,
-        500,
-        500,
+        width,
+        height,
         SDL_WINDOW_OPENGL);
 
     if (sdl_window == NULL) {
