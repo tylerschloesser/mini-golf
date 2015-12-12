@@ -28,6 +28,5 @@ int main(int argc, char* argv[]) {
     Game game(renderer);
     game.run();
 
-
     return 0;
 }

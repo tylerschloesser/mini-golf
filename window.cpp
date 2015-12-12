@@ -21,9 +21,6 @@ int Window::init() {
         return 1;
     }
 
-
-
-
     return 0;
 }
 

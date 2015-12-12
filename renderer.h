@@ -10,6 +10,8 @@ private:
     Window& window;
 
     SDL_Renderer* sdl_renderer;
+
+    void set_color(uint8_t r, uint8_t g, uint8_t b);
 public:
     Renderer(Course& course, Window& window);
     int init();

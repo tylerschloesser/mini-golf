@@ -16,10 +16,15 @@ int Renderer::init() {
 
 void Renderer::render() {
 
-    SDL_SetRenderDrawColor(sdl_renderer, 0xff, 0xff, 0xcc, 0xff);
+    set_color(0xff, 0xff, 0xcc);
     SDL_RenderClear(sdl_renderer);
 
+    set_color(0xff, 0, 0);
     SDL_RenderDrawLine(sdl_renderer, 0,0,window.width, window.height);
 
     SDL_RenderPresent(sdl_renderer);
+}
+
+void Renderer::set_color(uint8_t r, uint8_t g, uint8_t b) {
+    SDL_SetRenderDrawColor(sdl_renderer, r, g, b, 0xFF);  
 }
