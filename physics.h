@@ -1,6 +1,9 @@
 #ifndef PHYSICS_H
 #define PHYSICS_H
 
+#include "course.h"
+#include "ball.h"
+
 class Physics {
 
 private:

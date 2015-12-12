@@ -2,8 +2,8 @@
 
 #include "renderer.h"
 
-Renderer::Renderer(Course& course, Window& window) :
-    course(course), window(window), sdl_renderer(NULL) {
+Renderer::Renderer(Course& course, Ball& ball, Window& window) :
+    course(course), ball(ball), window(window), sdl_renderer(NULL) {
 
     scale_x = window.width / course.width;
     scale_y = window.height / course.height;

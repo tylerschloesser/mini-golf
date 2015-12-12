@@ -25,7 +25,7 @@ int main(int argc, char* argv[]) {
     Course course(10, 10, vertices);
     Ball ball(5, 5);
 
-    Renderer renderer(course, window);
+    Renderer renderer(course, ball, window);
     assert(renderer.init() == 0);
 
     Physics physics(course, ball);
