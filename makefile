@@ -2,7 +2,7 @@ CC=g++
 CFLAGS=-c -Wall
 LDFLAGS=
 
-SRC=main.cpp
+SRC=main.cpp window.cpp
 OBJ=$(SRC:.cpp=.o)
 
 EXE=mini
