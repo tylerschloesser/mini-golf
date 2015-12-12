@@ -23,7 +23,7 @@ int main(int argc, char* argv[]) {
         glm::vec2(9,1)
     };
     Course course(10, 10, vertices);
-    Ball ball(5, 5, 1);
+    Ball ball(5, 5, .5);
 
     Renderer renderer(course, ball, window);
     assert(renderer.init() == 0);

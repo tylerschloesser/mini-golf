@@ -1,3 +1,5 @@
+#include <cstdio>
+
 #include "physics.h"
 #include "math.h"
 
@@ -11,7 +13,10 @@ void Physics::update(uint32_t elapsed) {
         int ia = i, ib = (i + 1) % vertices.size();
         glm::vec2 a = vertices[ia], b = vertices[ib];
 
-        //if (line_intersects_circle(a, b, new_position, b
+        if (line_intersects_circle(a, b, new_position, ball.radius)) {
+            new_position = ball.position;
+            ball.velocity *= -1.0f;
+        }
     }
     
 
