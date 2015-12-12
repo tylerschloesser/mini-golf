@@ -26,3 +26,11 @@ int Window::init(int argc, char* argv[]) {
 
     return 0;
 }
+
+Window::~Window() {
+    if (sdl_window == NULL) {
+        return;
+    }
+    SDL_DestroyWindow(sdl_window);
+    SDL_Quit();
+}

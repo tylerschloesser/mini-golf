@@ -5,10 +5,9 @@
 
 #include "window.h"
 #include "course.h"
+#include "game.h"
 
 int main(int argc, char* argv[]) {
-    printf("hello world!\n");
-
     Window window;
     window.init(argc, argv);
 
@@ -20,7 +19,8 @@ int main(int argc, char* argv[]) {
     };
     Course course(10, 10, vertices);
 
-    getchar();
+    Game game(course);
+
 
     return 0;
 }
