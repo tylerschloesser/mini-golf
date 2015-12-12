@@ -1,6 +1,6 @@
 CC=g++
-CFLAGS=-c -Wall -std=c++11
-LDFLAGS=-lSDL2
+CFLAGS=-c -Wall -std=c++11 -g
+LDFLAGS=-lSDL2 -g
 
 SRC=main.cpp window.cpp course.cpp game.cpp renderer.cpp
 OBJ=$(SRC:.cpp=.o)

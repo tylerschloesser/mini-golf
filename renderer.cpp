@@ -5,10 +5,11 @@
 Renderer::Renderer(Course& course, Window& window) :
     course(course), window(window), sdl_renderer(NULL) {
 
-    scale_x = window.width / static_cast<double>(course.width);
-    scale_y = window.height / static_cast<double>(course.height);
+    scale_x = window.width / course.width;
+    scale_y = window.height / course.height;
+    scale = glm::ivec2(scale_x, scale_y);
 
-    fprintf(stderr, "Renderer created\n  scale_x: %.2f\n  scale_y: %.2f\n",
+    fprintf(stderr, "Renderer created\n  scale_x: %i\n  scale_y: %i\n",
         scale_x, scale_y);
 }
 
@@ -27,12 +28,15 @@ void Renderer::render() {
     set_color(0xff, 0xff, 0xcc);
     SDL_RenderClear(sdl_renderer);
 
-    for (glm::ivec2 vertex : course.vertices) {
-
-    }
-
+    std::vector<glm::ivec2> vertices = course.vertices;
+    assert(vertices.size() > 1);
     set_color(0xff, 0, 0);
-    SDL_RenderDrawLine(sdl_renderer, 0,0,window.width, window.height);
+
+    for (std::vector<glm::ivec2>::size_type i = 0; i < vertices.size(); i++) {
+        int ia = i, ib = (i + 1) % vertices.size();
+        glm::ivec2 a = vertices[ia] * scale, b = vertices[ib] * scale;
+        SDL_RenderDrawLine(sdl_renderer, a[0], a[1], b[0], b[1]);
+    }
 
     SDL_RenderPresent(sdl_renderer);
 }
