@@ -1,5 +1,6 @@
 #include <vector>
 #include <cstdio>
+#include <cassert>
 
 #include <glm/vec2.hpp>
 
@@ -9,8 +10,9 @@
 #include "game.h"
 
 int main(int argc, char* argv[]) {
+
     Window window;
-    window.init(argc, argv);
+    assert(window.init() == 0);
 
     std::vector<glm::ivec2> vertices = {
         glm::ivec2(1,1),
@@ -21,6 +23,7 @@ int main(int argc, char* argv[]) {
     Course course(10, 10, vertices);
 
     Renderer renderer(course, window);
+    assert(renderer.init() == 0);
 
     Game game(renderer);
     game.run();

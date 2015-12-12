@@ -2,7 +2,7 @@
 
 #include "window.h"
 
-int Window::init(int argc, char* argv[]) {
+int Window::init() {
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
         fprintf(stderr, "SDL_Init: %s\n", SDL_GetError());
         return 1;

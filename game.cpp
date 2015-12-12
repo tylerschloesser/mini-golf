@@ -52,5 +52,7 @@ void Game::run() {
                 }
             }
         }
+
+        renderer.render();
     }
 }
