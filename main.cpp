@@ -6,7 +6,9 @@
 
 #include "window.h"
 #include "course.h"
+#include "ball.h"
 #include "renderer.h"
+#include "physics.h"
 #include "game.h"
 
 int main(int argc, char* argv[]) {
@@ -21,9 +23,12 @@ int main(int argc, char* argv[]) {
         glm::ivec2(9,1)
     };
     Course course(10, 10, vertices);
+    Ball ball(5, 5);
 
     Renderer renderer(course, window);
     assert(renderer.init() == 0);
+
+    Physics physics(course, ball);
 
     Game game(renderer);
     game.run();
