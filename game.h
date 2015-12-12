@@ -6,6 +6,7 @@
 class Game {
 private:
     uint32_t last_frame;
+    uint32_t frame_time;
 
 public:
     Course& course;
