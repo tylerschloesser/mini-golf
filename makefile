@@ -1,8 +1,8 @@
 CC=g++
-CFLAGS=-c -Wall
+CFLAGS=-c -Wall -std=c++11
 LDFLAGS=-lSDL2
 
-SRC=main.cpp window.cpp
+SRC=main.cpp window.cpp course.cpp
 OBJ=$(SRC:.cpp=.o)
 
 EXE=mini
