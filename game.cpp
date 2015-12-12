@@ -35,14 +35,13 @@ void Game::run() {
         }
         last_frame = SDL_GetTicks();
 
-
         // calculate fps
         {
             static uint32_t last_fps_update = 0;
             static uint32_t frames = 0;
             frames++;
             if (last_fps_update == 0) {
-                last_fps_update = SDL_GetTicks(); 
+                last_fps_update = last_frame;
             } else {
                 uint32_t elapsed = last_frame - last_fps_update;
                 if (elapsed > FPS_UPDATE_FREQ) {
