@@ -12,6 +12,7 @@ private:
 public:
     Physics(Course& course, Ball& ball) :
         course(course), ball(ball) {}
+    void update(uint32_t elapsed);
 };
 
 #endif // PHYSICS_H

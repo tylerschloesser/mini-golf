@@ -1,4 +1,7 @@
 #include <cstdio>
+#include <cmath>
+
+#include <SDL2/SDL2_gfxPrimitives.h>
 
 #include "renderer.h"
 
@@ -38,9 +41,15 @@ void Renderer::render() {
         SDL_RenderDrawLine(sdl_renderer, a[0], a[1], b[0], b[1]);
     }
 
+    {
+        glm::ivec2 position = ball.position * scale;
+        int x = position[0], y = position[1];
+        assert(filledCircleColor(sdl_renderer, x, y, 10, 0xFFFF00FF) == 0);
+    }
+
     SDL_RenderPresent(sdl_renderer);
 }
 
 void Renderer::set_color(uint8_t r, uint8_t g, uint8_t b) {
-    SDL_SetRenderDrawColor(sdl_renderer, r, g, b, 0xFF);  
+    SDL_SetRenderDrawColor(sdl_renderer, r, g, b, 0xFF);
 }
