@@ -5,8 +5,7 @@
 
 class Window {
 public:
-    Window(int width, int height) :
-        width(width), height(height), sdl_window(NULL) {}
+    Window(int width, int height);
     ~Window();
 
     int width, height;

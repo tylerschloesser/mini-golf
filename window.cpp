@@ -2,6 +2,10 @@
 
 #include "window.h"
 
+Window::Window(int width, int height) : width(width), height(height), sdl_window(NULL) {
+    fprintf(stderr, "Window created\n  width: %d\n  height: %d\n", width, height);
+}
+
 int Window::init() {
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
         fprintf(stderr, "SDL_Init: %s\n", SDL_GetError());
@@ -20,6 +24,8 @@ int Window::init() {
         fprintf(stderr, "SDL_CreateWindow: %s\n", SDL_GetError());
         return 1;
     }
+
+    fprintf(stderr, "Window initialized\n");
 
     return 0;
 }

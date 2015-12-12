@@ -11,6 +11,8 @@ private:
 
     SDL_Renderer* sdl_renderer;
 
+    double scale_x, scale_y;
+
     void set_color(uint8_t r, uint8_t g, uint8_t b);
 public:
     Renderer(Course& course, Window& window);
