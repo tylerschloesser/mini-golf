@@ -15,7 +15,7 @@ private:
     SDL_Renderer* sdl_renderer;
 
     int scale_x, scale_y;
-    glm::ivec2 scale;
+    glm::vec2 scale;
 
     void set_color(uint8_t r, uint8_t g, uint8_t b);
 public:

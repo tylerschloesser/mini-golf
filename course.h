@@ -9,9 +9,9 @@ class Course {
 
 public:
     int width, height;
-    std::vector<glm::ivec2> vertices;
+    std::vector<glm::vec2> vertices;
 
-    Course(int width, int height, std::vector<glm::ivec2> vertices);
+    Course(int width, int height, std::vector<glm::vec2> vertices);
 };
 
 #endif // COURSE_H

@@ -10,7 +10,7 @@ Renderer::Renderer(Course& course, Ball& ball, Window& window) :
 
     scale_x = window.width / course.width;
     scale_y = window.height / course.height;
-    scale = glm::ivec2(scale_x, scale_y);
+    scale = glm::vec2(scale_x, scale_y);
 
     fprintf(stderr, "Renderer created\n  scale_x: %i\n  scale_y: %i\n",
         scale_x, scale_y);
@@ -31,18 +31,18 @@ void Renderer::render() {
     set_color(0xff, 0xff, 0xcc);
     SDL_RenderClear(sdl_renderer);
 
-    std::vector<glm::ivec2> vertices = course.vertices;
+    std::vector<glm::vec2> vertices = course.vertices;
     assert(vertices.size() > 1);
     set_color(0xff, 0, 0);
 
-    for (std::vector<glm::ivec2>::size_type i = 0; i < vertices.size(); i++) {
+    for (std::vector<glm::vec2>::size_type i = 0; i < vertices.size(); i++) {
         int ia = i, ib = (i + 1) % vertices.size();
-        glm::ivec2 a = vertices[ia] * scale, b = vertices[ib] * scale;
+        glm::vec2 a = vertices[ia] * scale, b = vertices[ib] * scale;
         SDL_RenderDrawLine(sdl_renderer, a[0], a[1], b[0], b[1]);
     }
 
     {
-        glm::ivec2 position = ball.position * scale;
+        glm::vec2 position = ball.position * scale;
         int x = position[0], y = position[1];
         assert(filledCircleColor(sdl_renderer, x, y, 10, 0xFFFF00FF) == 0);
     }

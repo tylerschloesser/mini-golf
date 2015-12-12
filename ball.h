@@ -5,8 +5,8 @@
 
 class Ball {
 public:
-    glm::ivec2 position;
-    glm::ivec2 velocity;
+    glm::vec2 position;
+    glm::vec2 velocity;
     Ball(int x, int y);
 };
 
