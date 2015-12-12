@@ -10,8 +10,9 @@ private:
 
 public:
     Renderer& renderer;
+    Physics& physics;
 
-    Game(Renderer& renderer);
+    Game(Renderer& renderer, Physics& physics);
 
     void run();
 };

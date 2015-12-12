@@ -30,7 +30,7 @@ int main(int argc, char* argv[]) {
 
     Physics physics(course, ball);
 
-    Game game(renderer);
+    Game game(renderer, physics);
     game.run();
 
     return 0;

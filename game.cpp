@@ -8,7 +8,8 @@
 #define FPS_UPDATE_FREQ 2000 // ms
 #define FRAMES_DEN (FPS_UPDATE_FREQ / 1000.0)
 
-Game::Game(Renderer& renderer) : last_frame(0), renderer(renderer) {
+Game::Game(Renderer& renderer, Physics& physics) :
+    last_frame(0), renderer(renderer), physics(physics) {
 
     frame_time = 1000 / TARGET_FPS;
 
@@ -26,9 +27,10 @@ void Game::run() {
             }
         }
 
+        uint32_t elapsed = 0;
         if (last_frame != 0) {
             uint32_t now = SDL_GetTicks();
-            uint32_t elapsed = now - last_frame;
+            elapsed = now - last_frame;
             if (elapsed < frame_time) {
                 SDL_Delay(frame_time - elapsed);
             }
@@ -53,6 +55,7 @@ void Game::run() {
             }
         }
 
+        physics.update(elapsed);
         renderer.render();
     }
 }
