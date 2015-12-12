@@ -1,7 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "course.h"
+#include "renderer.h"
 
 class Game {
 private:
@@ -9,9 +9,9 @@ private:
     uint32_t frame_time;
 
 public:
-    Course& course;
+    Renderer& renderer;
 
-    Game(Course& course);
+    Game(Renderer& renderer);
 
     void run();
 };

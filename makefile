@@ -2,7 +2,7 @@ CC=g++
 CFLAGS=-c -Wall -std=c++11
 LDFLAGS=-lSDL2
 
-SRC=main.cpp window.cpp course.cpp game.cpp
+SRC=main.cpp window.cpp course.cpp game.cpp renderer.cpp
 OBJ=$(SRC:.cpp=.o)
 
 EXE=mini

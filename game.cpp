@@ -8,7 +8,7 @@
 #define FPS_UPDATE_FREQ 2000 // ms
 #define FRAMES_DEN (FPS_UPDATE_FREQ / 1000.0)
 
-Game::Game(Course& course) : last_frame(0), course(course) {
+Game::Game(Renderer& renderer) : last_frame(0), renderer(renderer) {
 
     frame_time = 1000 / TARGET_FPS;
 
