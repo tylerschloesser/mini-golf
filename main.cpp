@@ -20,6 +20,7 @@ int main(int argc, char* argv[]) {
     Course course(10, 10, vertices);
 
     Game game(course);
+    game.run();
 
 
     return 0;
