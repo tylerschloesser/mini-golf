@@ -49,6 +49,14 @@ void Renderer::render() {
         assert(filledCircleColor(sdl_renderer, x, y, radius, 0xFFFF00FF) == 0);
     }
 
+    {
+        glm::vec2 position = course.hole * scale;
+        // TODO scale in both directions
+        float radius = course.hole_radius * scale[0];
+        int x = position[0], y = position[1];
+        assert(filledCircleColor(sdl_renderer, x, y, radius, Color::GRAY.hex) == 0);
+    }
+
     for (Line* line : lines) {
         if (line->visible) {
             glm::vec2 a = line->a, b = line->b;
@@ -64,7 +72,7 @@ void Renderer::set_color(uint8_t r, uint8_t g, uint8_t b) {
 }
 
 void Renderer::set_color(const Color& color) {
-    set_color(color.a, color.g, color.b);
+    set_color(color.r, color.g, color.b);
 }
 
 void Renderer::add(Line* line) {

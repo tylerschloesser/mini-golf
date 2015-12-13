@@ -11,6 +11,9 @@ public:
     int width, height;
     std::vector<glm::vec2> vertices;
 
+    glm::vec2 hole;
+    float hole_radius;
+
     Course(int width, int height, std::vector<glm::vec2> vertices);
 };
 
