@@ -16,12 +16,20 @@ int main(int argc, char* argv[]) {
     Window window(500, 500);
     assert(window.init() == 0);
 
+    //std::vector<glm::vec2> vertices = {
+    //    glm::vec2(1,1),
+    //    glm::vec2(1,9),
+    //    glm::vec2(9,9),
+    //    glm::vec2(9,1)
+    //};
+
     std::vector<glm::vec2> vertices = {
-        glm::vec2(1,1),
-        glm::vec2(1,9),
-        glm::vec2(9,9),
-        glm::vec2(9,1)
+        glm::vec2(5,1),
+        glm::vec2(9,5),
+        glm::vec2(5,7),
+        glm::vec2(2,9)
     };
+
     Course course(10, 10, vertices);
     Ball ball(5, 5, .5);
 

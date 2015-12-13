@@ -1,5 +1,10 @@
 #include <cstdio>
 
+#include <glm/geometric.hpp>
+#include <glm/trigonometric.hpp>
+#include <glm/mat2x2.hpp>
+//#include <glm/gtx/rotate_vector.hpp>
+
 #include "physics.h"
 #include "math.h"
 
@@ -14,11 +19,25 @@ void Physics::update(uint32_t elapsed) {
         glm::vec2 a = vertices[ia], b = vertices[ib];
 
         if (line_intersects_circle(a, b, new_position, ball.radius)) {
+
+            glm::vec2 v1 = glm::normalize(ball.velocity);
+            glm::vec2 v2 = glm::normalize(a - b);
+            float dot = glm::dot(v1, v2);
+            float angle = acos(dot);
+
+            fprintf(stderr, "initial angle: %f\n", glm::degrees(angle));
+
+            angle *= 2;
+            fprintf(stderr, "will rotate: %f\n", glm::degrees(angle));
+
+            ball.velocity =
+                glm::mat2x2(cos(angle), -sin(angle), sin(angle), cos(angle)) * ball.velocity;
+
+
             new_position = ball.position;
-            ball.velocity *= -1.0f;
         }
     }
-    
+
 
     ball.position = new_position;
 }

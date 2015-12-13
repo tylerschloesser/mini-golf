@@ -2,7 +2,7 @@
 
 Ball::Ball(int x, int y, float radius) {
     position = glm::vec2(x, y);
-    velocity = glm::vec2(10, 10);
+    velocity = glm::vec2(5, 5);
     this->radius = radius;
 }
 
