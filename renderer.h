@@ -16,9 +16,6 @@ private:
 
     SDL_Renderer* sdl_renderer;
 
-    int scale_x, scale_y;
-    glm::vec2 scale;
-
     std::vector<Line*> lines;
 
     void set_color(uint8_t r, uint8_t g, uint8_t b);
@@ -29,6 +26,8 @@ public:
     void render();
 
     void add(Line* line);
+
+    glm::vec2 scale;
 };
 
 #endif // RENDERER_H

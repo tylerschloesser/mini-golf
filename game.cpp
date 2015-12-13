@@ -8,8 +8,8 @@
 #define FPS_UPDATE_FREQ 2000 // ms
 #define FRAMES_DEN (FPS_UPDATE_FREQ / 1000.0)
 
-Game::Game(Renderer& renderer, Physics& physics) :
-    last_frame(0), renderer(renderer), physics(physics) {
+Game::Game(Renderer& renderer, Physics& physics, Ball& ball) :
+    renderer(renderer), physics(physics), ball(ball), last_frame(0) {
 
     frame_time = 1000 / TARGET_FPS;
 
@@ -85,6 +85,8 @@ void Game::handle_mouse_click(SDL_MouseButtonEvent event) {
         shot_line->a = shot_line->b = glm::vec2(event.x, event.y);
     } else { // SDL_RELEASED
         shot_line->visible = false;
+        glm::vec2 velocity = shot_line->b - shot_line->a;
+        ball.velocity = velocity / renderer.scale;
     }
 }
 

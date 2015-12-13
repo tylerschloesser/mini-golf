@@ -8,12 +8,12 @@
 Renderer::Renderer(Course& course, Ball& ball, Window& window) :
     course(course), ball(ball), window(window), sdl_renderer(NULL) {
 
-    scale_x = window.width / course.width;
-    scale_y = window.height / course.height;
+    float scale_x = static_cast<float>(window.width) / course.width;
+    float scale_y = static_cast<float>(window.height) / course.height;
     scale = glm::vec2(scale_x, scale_y);
 
-    fprintf(stderr, "Renderer created\n  scale_x: %i\n  scale_y: %i\n",
-        scale_x, scale_y);
+    fprintf(stderr, "Renderer created\n  scale: (%.1f, %.1f)\n",
+        scale[0], scale[1]);
 }
 
 int Renderer::init() {
@@ -44,7 +44,7 @@ void Renderer::render() {
     {
         glm::vec2 position = ball.position * scale;
         // TODO scale in both directions
-        float radius = ball.radius * scale_x;
+        float radius = ball.radius * scale[0];
         int x = position[0], y = position[1];
         assert(filledCircleColor(sdl_renderer, x, y, radius, 0xFFFF00FF) == 0);
     }

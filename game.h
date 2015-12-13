@@ -6,6 +6,10 @@
 
 class Game {
 private:
+    Renderer& renderer;
+    Physics& physics;
+    Ball& ball;
+
     uint32_t last_frame;
     uint32_t frame_time;
 
@@ -15,13 +19,8 @@ private:
     void update(uint32_t elapsed);
 
     Line* shot_line;
-
 public:
-    Renderer& renderer;
-    Physics& physics;
-
-    Game(Renderer& renderer, Physics& physics);
-
+    Game(Renderer& renderer, Physics& physics, Ball& ball);
     void run();
 };
 

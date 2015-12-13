@@ -33,7 +33,7 @@ int main(int argc, char* argv[]) {
     Course course(10, 10, vertices);
 
     glm::vec2 ball_position(5, 5);
-    glm::vec2 ball_velocity(1, 1);
+    glm::vec2 ball_velocity(0, 0);
     float ball_radius = .25f;
     Ball ball(ball_position, ball_velocity, ball_radius);
 
@@ -42,7 +42,7 @@ int main(int argc, char* argv[]) {
 
     Physics physics(course, ball);
 
-    Game game(renderer, physics);
+    Game game(renderer, physics, ball);
     game.run();
 
     return 0;
