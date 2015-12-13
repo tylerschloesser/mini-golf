@@ -10,6 +10,7 @@ private:
     uint32_t frame_time;
 
     void handle_mouse_click(SDL_MouseButtonEvent event);
+    void handle_mouse_motion(SDL_MouseMotionEvent event);
 
     void update(uint32_t elapsed);
 
