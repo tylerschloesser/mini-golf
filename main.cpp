@@ -31,7 +31,11 @@ int main(int argc, char* argv[]) {
     };
 
     Course course(10, 10, vertices);
-    Ball ball(5, 5, .5);
+
+    glm::vec2 ball_position(5, 5);
+    glm::vec2 ball_velocity(1, 1);
+    float ball_radius = 1.0f;
+    Ball ball(ball_position, ball_velocity, ball_radius);
 
     Renderer renderer(course, ball, window);
     assert(renderer.init() == 0);

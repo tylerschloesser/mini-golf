@@ -28,14 +28,14 @@ void Game::run() {
         }
 
         uint32_t elapsed = 0;
+        uint32_t now = SDL_GetTicks();
         if (last_frame != 0) {
-            uint32_t now = SDL_GetTicks();
             elapsed = now - last_frame;
             if (elapsed < frame_time) {
                 SDL_Delay(frame_time - elapsed);
             }
         }
-        last_frame = SDL_GetTicks();
+        last_frame = now;
 
         // calculate fps
         {
