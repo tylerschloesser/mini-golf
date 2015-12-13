@@ -1,6 +1,7 @@
 #include <cstdio>
 
 #include <SDL2/SDL.h>
+#include <glm/geometric.hpp>
 
 #include "game.h"
 
@@ -87,6 +88,9 @@ void Game::handle_mouse_click(SDL_MouseButtonEvent event) {
         shot_line->visible = false;
         glm::vec2 velocity = shot_line->b - shot_line->a;
         ball.velocity = velocity / renderer.scale;
+        
+        float friction = .99f;
+        ball.acceleration = glm::normalize(-velocity) * friction;
     }
 }
 

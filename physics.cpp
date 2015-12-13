@@ -11,6 +11,12 @@
 void Physics::update(uint32_t elapsed) {
     float elapsed_s = elapsed / 1000.0;
 
+    if (glm::length(ball.velocity) <= 0.1f) {
+        // TODO this only makes sense because acceleration is actually friction
+        ball.velocity = ball.acceleration = glm::vec2(0, 0);
+        return;
+    }
+
     ball.velocity += ball.acceleration * elapsed_s;
 
     glm::vec2 new_position = ball.position + (ball.velocity * elapsed_s);
@@ -28,8 +34,12 @@ void Physics::update(uint32_t elapsed) {
             float dot = glm::dot(v1, v2);
             float angle = acos(dot) * 2;
 
+            float dampening = 0.95f;
             ball.velocity =
-                glm::mat2x2(cos(angle), sin(angle), -sin(angle), cos(angle)) * ball.velocity;
+                glm::mat2x2(cos(angle), sin(angle), -sin(angle), cos(angle)) * (ball.velocity * dampening);
+
+            float friction = 0.99f;
+            ball.acceleration = glm::normalize(-ball.velocity) * friction;
 
             new_position = ball.position;
         }
