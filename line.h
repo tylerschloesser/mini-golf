@@ -11,7 +11,7 @@ public:
     Color color;
     bool visible;
 
-    Line(glm::vec2 a = glm::vec2(), glm::vec2 b = glm::vec2(), Color color = Color::WHITE, bool visible = true) :
+    Line(glm::vec2 a = glm::vec2(), glm::vec2 b = glm::vec2(), Color color = Color::BLACK, bool visible = true) :
         a(a), b(b), color(color), visible(visible) {}
 };
 

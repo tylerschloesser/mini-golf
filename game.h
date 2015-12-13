@@ -13,7 +13,7 @@ private:
 
     void update(uint32_t elapsed);
 
-    Line shot_line;
+    Line* shot_line;
 
 public:
     Renderer& renderer;

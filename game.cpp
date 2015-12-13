@@ -13,6 +13,10 @@ Game::Game(Renderer& renderer, Physics& physics) :
 
     frame_time = 1000 / TARGET_FPS;
 
+    shot_line = new Line();
+    shot_line->visible = false;
+    renderer.add(shot_line);
+
     fprintf(stderr, "Game initialized\n  frame_time: %i ms\n", frame_time);
 }
 
@@ -26,6 +30,7 @@ void Game::run() {
                 case SDL_QUIT:
                     stop = true;
                     break;
+                case SDL_MOUSEBUTTONUP:
                 case SDL_MOUSEBUTTONDOWN:
                 {
                     handle_mouse_click(sdl_event.button);
@@ -70,9 +75,15 @@ void Game::run() {
 }
 
 void Game::update(uint32_t elapsed) {
-
 }
 
 void Game::handle_mouse_click(SDL_MouseButtonEvent event) {
-
+    if (event.state == SDL_PRESSED) {
+        shot_line->visible = true;
+        shot_line->a = glm::vec2(event.x, event.y);
+        shot_line->b = glm::vec2(event.x + 100, event.y + 100);
+        shot_line->color = Color::BLACK;
+    } else { // SDL_RELEASED
+        shot_line->visible = false;
+    }
 }

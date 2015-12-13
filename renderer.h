@@ -5,6 +5,8 @@
 #include "course.h"
 #include "ball.h"
 #include "window.h"
+#include "line.h"
+#include "color.h"
 
 class Renderer {
 private:
@@ -17,11 +19,16 @@ private:
     int scale_x, scale_y;
     glm::vec2 scale;
 
+    std::vector<Line*> lines;
+
     void set_color(uint8_t r, uint8_t g, uint8_t b);
+    void set_color(const Color& color);
 public:
     Renderer(Course& course, Ball& ball, Window& window);
     int init();
     void render();
+
+    void add(Line* line);
 };
 
 #endif // RENDERER_H

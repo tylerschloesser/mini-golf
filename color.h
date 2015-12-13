@@ -10,6 +10,7 @@ public:
         r(r), g(g), b(b), a(a) {}
     
     static Color WHITE;
+    static Color BLACK;
 };
 
 #endif // COLOR_H

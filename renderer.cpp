@@ -49,9 +49,25 @@ void Renderer::render() {
         assert(filledCircleColor(sdl_renderer, x, y, radius, 0xFFFF00FF) == 0);
     }
 
+    for (Line* line : lines) {
+        if (line->visible) {
+            glm::vec2 a = line->a, b = line->b;
+            SDL_RenderDrawLine(sdl_renderer, a[0], a[1], b[0], b[1]);
+        }
+    }
+
     SDL_RenderPresent(sdl_renderer);
 }
 
 void Renderer::set_color(uint8_t r, uint8_t g, uint8_t b) {
     SDL_SetRenderDrawColor(sdl_renderer, r, g, b, 0xFF);
 }
+
+void Renderer::set_color(const Color& color) {
+    set_color(color.a, color.g, color.b);
+}
+
+void Renderer::add(Line* line) {
+    lines.push_back(line);
+}
+
