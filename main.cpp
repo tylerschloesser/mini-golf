@@ -24,10 +24,10 @@ int main(int argc, char* argv[]) {
     //};
 
     std::vector<glm::vec2> vertices = {
-        glm::vec2(5,1),
-        glm::vec2(9,5),
-        glm::vec2(5,7),
-        glm::vec2(2,9)
+        glm::vec2(1,1),
+        glm::vec2(2,9),
+        glm::vec2(8,8),
+        glm::vec2(9,2)
     };
 
     Course course(10, 10, vertices);

@@ -18,21 +18,16 @@ void Physics::update(uint32_t elapsed) {
         int ia = i, ib = (i + 1) % vertices.size();
         glm::vec2 a = vertices[ia], b = vertices[ib];
 
+        // TODO handle intersecting multiple lines
         if (line_intersects_circle(a, b, new_position, ball.radius)) {
 
             glm::vec2 v1 = glm::normalize(ball.velocity);
             glm::vec2 v2 = glm::normalize(a - b);
             float dot = glm::dot(v1, v2);
-            float angle = acos(dot);
-
-            fprintf(stderr, "initial angle: %f\n", glm::degrees(angle));
-
-            angle *= 2;
-            fprintf(stderr, "will rotate: %f\n", glm::degrees(angle));
+            float angle = acos(dot) * 2;
 
             ball.velocity =
-                glm::mat2x2(cos(angle), -sin(angle), sin(angle), cos(angle)) * ball.velocity;
-
+                glm::mat2x2(cos(angle), sin(angle), -sin(angle), cos(angle)) * ball.velocity;
 
             new_position = ball.position;
         }
