@@ -19,6 +19,8 @@ Game::Game(Renderer& renderer, Physics& physics, Course& course, Ball& ball) :
     shot_line->color = Color::BLACK;
     renderer.add(shot_line);
 
+    state = DROP_BALL;
+
     fprintf(stderr, "Game initialized\n  frame_time: %i ms\n", frame_time);
 }
 
@@ -86,26 +88,41 @@ void Game::update(uint32_t elapsed) {
 
     if (d < course.hole_radius) {
         fprintf(stderr, "you win!\n");
+        state = DROP_BALL;
+
+        int x, y;
+        SDL_GetMouseState(&x, &y);
+        ball.velocity = ball.acceleration = glm::vec2(0, 0);
+        ball.position = glm::vec2(x, y) / renderer.scale;
     }
 }
 
 void Game::handle_mouse_click(SDL_MouseButtonEvent event) {
     if (event.state == SDL_PRESSED) {
-        shot_line->visible = true;
-        shot_line->a = shot_line->b = glm::vec2(event.x, event.y);
+        if (state == PLAY) {
+            shot_line->visible = true;
+            shot_line->a = shot_line->b = glm::vec2(event.x, event.y);
+        }
     } else { // SDL_RELEASED
-        shot_line->visible = false;
-        glm::vec2 velocity = shot_line->b - shot_line->a;
-        ball.velocity = velocity / renderer.scale;
-        
-        float friction = .99f;
-        ball.acceleration = glm::normalize(-velocity) * friction;
+        if (state == PLAY) {
+            shot_line->visible = false;
+            glm::vec2 velocity = shot_line->b - shot_line->a;
+            ball.velocity = velocity / renderer.scale;
+
+            float friction = .99f;
+            ball.acceleration = glm::normalize(-velocity) * friction;
+        } else { // DROP_BALL
+            state = PLAY;
+        }
     }
 }
 
 void Game::handle_mouse_motion(SDL_MouseMotionEvent event) {
     assert(!shot_line->visible || (event.state | SDL_BUTTON_LMASK));
-    if (shot_line->visible) {
+
+    if (state == DROP_BALL) {
+        ball.position = glm::vec2(event.x, event.y) / renderer.scale;
+    } else if (shot_line->visible) {
         glm::vec2 &a = shot_line->a;
         glm::vec2 b(event.x, event.y);
         shot_line->b = a + -(b - a);

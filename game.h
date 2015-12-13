@@ -4,6 +4,11 @@
 #include "renderer.h"
 #include "line.h"
 
+enum GameState {
+    DROP_BALL,
+    PLAY,
+};
+
 class Game {
 private:
     Renderer& renderer;
@@ -20,6 +25,8 @@ private:
     void update(uint32_t elapsed);
 
     Line* shot_line;
+
+    GameState state;
 public:
     Game(Renderer& renderer, Physics& physics, Course& course, Ball& ball);
     void run();
