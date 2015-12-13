@@ -22,8 +22,17 @@ void Game::run() {
     SDL_Event sdl_event;
     while(!stop) {
         while(SDL_PollEvent(&sdl_event) != 0) {
-            if(sdl_event.type == SDL_QUIT) {
-                stop = true;
+            switch(sdl_event.type) {
+                case SDL_QUIT:
+                    stop = true;
+                    break;
+                case SDL_MOUSEBUTTONDOWN:
+                {
+                    handle_mouse_click(sdl_event.button);
+                    break;
+                }
+                default:
+                    break;
             }
         }
 
@@ -58,4 +67,8 @@ void Game::run() {
         physics.update(elapsed);
         renderer.render();
     }
+}
+
+void Game::handle_mouse_click(SDL_MouseButtonEvent event) {
+
 }

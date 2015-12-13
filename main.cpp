@@ -34,7 +34,7 @@ int main(int argc, char* argv[]) {
 
     glm::vec2 ball_position(5, 5);
     glm::vec2 ball_velocity(1, 1);
-    float ball_radius = 1.0f;
+    float ball_radius = .25f;
     Ball ball(ball_position, ball_velocity, ball_radius);
 
     Renderer renderer(course, ball, window);

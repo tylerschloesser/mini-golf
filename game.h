@@ -8,6 +8,8 @@ private:
     uint32_t last_frame;
     uint32_t frame_time;
 
+    void handle_mouse_click(SDL_MouseButtonEvent event);
+
 public:
     Renderer& renderer;
     Physics& physics;
