@@ -82,4 +82,3 @@ void Renderer::set_color(const Color& color) {
 void Renderer::add(Line* line) {
     lines.push_back(line);
 }
-

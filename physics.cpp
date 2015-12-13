@@ -3,7 +3,6 @@
 #include <glm/geometric.hpp>
 #include <glm/trigonometric.hpp>
 #include <glm/mat2x2.hpp>
-//#include <glm/gtx/rotate_vector.hpp>
 
 #include "physics.h"
 #include "math.h"

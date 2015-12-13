@@ -28,22 +28,6 @@ void Game::run() {
     bool stop = false;
     SDL_Event sdl_event;
     while(!stop) {
-        while(SDL_PollEvent(&sdl_event) != 0) {
-            switch(sdl_event.type) {
-                case SDL_QUIT:
-                    stop = true;
-                    break;
-                case SDL_MOUSEBUTTONUP:
-                case SDL_MOUSEBUTTONDOWN:
-                    handle_mouse_click(sdl_event.button);
-                    break;
-                case SDL_MOUSEMOTION:
-                    handle_mouse_motion(sdl_event.motion);
-                    break;
-                default:
-                    break;
-            }
-        }
 
         uint32_t elapsed = 0;
         uint32_t now = SDL_GetTicks();
@@ -61,15 +45,32 @@ void Game::run() {
             static uint32_t frames = 0;
             frames++;
             if (last_fps_update == 0) {
-                last_fps_update = last_frame;
+                last_fps_update = now;
             } else {
-                uint32_t elapsed = last_frame - last_fps_update;
+                uint32_t elapsed = now - last_fps_update;
                 if (elapsed > FPS_UPDATE_FREQ) {
                     double fps = frames / FRAMES_DEN;
                     fprintf(stderr, "fps: %.2f\n", fps);
                     frames = 0;
-                    last_fps_update = last_frame;
+                    last_fps_update = now;
                 }
+            }
+        }
+
+        while(SDL_PollEvent(&sdl_event) != 0) {
+            switch(sdl_event.type) {
+                case SDL_QUIT:
+                    stop = true;
+                    break;
+                case SDL_MOUSEBUTTONUP:
+                case SDL_MOUSEBUTTONDOWN:
+                    handle_mouse_click(sdl_event.button);
+                    break;
+                case SDL_MOUSEMOTION:
+                    handle_mouse_motion(sdl_event.motion);
+                    break;
+                default:
+                    break;
             }
         }
 

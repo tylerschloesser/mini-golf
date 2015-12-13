@@ -15,7 +15,6 @@ private:
     Window& window;
 
     SDL_Renderer* sdl_renderer;
-
     std::vector<Line*> lines;
 
     void set_color(uint8_t r, uint8_t g, uint8_t b);
