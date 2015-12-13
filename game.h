@@ -8,6 +8,7 @@ class Game {
 private:
     Renderer& renderer;
     Physics& physics;
+    Course& course;
     Ball& ball;
 
     uint32_t last_frame;
@@ -20,7 +21,7 @@ private:
 
     Line* shot_line;
 public:
-    Game(Renderer& renderer, Physics& physics, Ball& ball);
+    Game(Renderer& renderer, Physics& physics, Course& course, Ball& ball);
     void run();
 };
 

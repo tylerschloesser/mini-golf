@@ -9,8 +9,8 @@
 #define FPS_UPDATE_FREQ 2000 // ms
 #define FRAMES_DEN (FPS_UPDATE_FREQ / 1000.0)
 
-Game::Game(Renderer& renderer, Physics& physics, Ball& ball) :
-    renderer(renderer), physics(physics), ball(ball), last_frame(0) {
+Game::Game(Renderer& renderer, Physics& physics, Course& course, Ball& ball) :
+    renderer(renderer), physics(physics), course(course), ball(ball), last_frame(0) {
 
     frame_time = 1000 / TARGET_FPS;
 
@@ -72,12 +72,21 @@ void Game::run() {
             }
         }
 
+        update(elapsed);
         physics.update(elapsed);
         renderer.render();
     }
 }
 
 void Game::update(uint32_t elapsed) {
+    float x1 = ball.position[0], y1 = ball.position[1];
+    float x2 = course.hole[0], y2 = course.hole[1];
+    float dx = x2 - x1, dy = y2 - y1;
+    float d = sqrt(dx * dx + dy * dy);
+
+    if (d < course.hole_radius) {
+        fprintf(stderr, "you win!\n");
+    }
 }
 
 void Game::handle_mouse_click(SDL_MouseButtonEvent event) {

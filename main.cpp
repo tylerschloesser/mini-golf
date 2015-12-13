@@ -42,7 +42,7 @@ int main(int argc, char* argv[]) {
 
     Physics physics(course, ball);
 
-    Game game(renderer, physics, ball);
+    Game game(renderer, physics, course, ball);
     game.run();
 
     return 0;

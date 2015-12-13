@@ -35,26 +35,29 @@ void Renderer::render() {
     assert(vertices.size() > 1);
     set_color(0xff, 0, 0);
 
+    // render course
     for (std::vector<glm::vec2>::size_type i = 0; i < vertices.size(); i++) {
         int ia = i, ib = (i + 1) % vertices.size();
         glm::vec2 a = vertices[ia] * scale, b = vertices[ib] * scale;
         SDL_RenderDrawLine(sdl_renderer, a[0], a[1], b[0], b[1]);
     }
 
-    {
-        glm::vec2 position = ball.position * scale;
-        // TODO scale in both directions
-        float radius = ball.radius * scale[0];
-        int x = position[0], y = position[1];
-        assert(filledCircleColor(sdl_renderer, x, y, radius, 0xFFFF00FF) == 0);
-    }
-
+    // render hole
     {
         glm::vec2 position = course.hole * scale;
         // TODO scale in both directions
         float radius = course.hole_radius * scale[0];
         int x = position[0], y = position[1];
         assert(filledCircleColor(sdl_renderer, x, y, radius, Color::GRAY.hex) == 0);
+    }
+
+    // render ball
+    {
+        glm::vec2 position = ball.position * scale;
+        // TODO scale in both directions
+        float radius = ball.radius * scale[0];
+        int x = position[0], y = position[1];
+        assert(filledCircleColor(sdl_renderer, x, y, radius, 0xFFFF00FF) == 0);
     }
 
     for (Line* line : lines) {
