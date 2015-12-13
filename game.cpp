@@ -69,6 +69,10 @@ void Game::run() {
     }
 }
 
+void Game::update(uint32_t elapsed) {
+
+}
+
 void Game::handle_mouse_click(SDL_MouseButtonEvent event) {
 
 }
