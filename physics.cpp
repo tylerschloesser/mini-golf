@@ -11,6 +11,8 @@
 void Physics::update(uint32_t elapsed) {
     float elapsed_s = elapsed / 1000.0;
 
+    ball.velocity += ball.acceleration * elapsed_s;
+
     glm::vec2 new_position = ball.position + (ball.velocity * elapsed_s);
 
     std::vector<glm::vec2> vertices = course.vertices;
@@ -32,7 +34,6 @@ void Physics::update(uint32_t elapsed) {
             new_position = ball.position;
         }
     }
-
 
     ball.position = new_position;
 }

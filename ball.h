@@ -8,7 +8,9 @@ public:
     glm::vec2 position;
     glm::vec2 velocity;
     float radius;
-    Ball(float x, float y, float radius);
+
+    glm::vec2 acceleration;
+
     Ball(glm::vec2 position, glm::vec2 velocity, float radius);
 };
 
