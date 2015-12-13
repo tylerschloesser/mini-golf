@@ -13,7 +13,7 @@ void Physics::update(uint32_t elapsed) {
 
     if (glm::length(ball.velocity) <= 0.1f) {
         // TODO this only makes sense because acceleration is actually friction
-        ball.velocity = ball.acceleration = glm::vec2(0, 0);
+        ball.stop();
         return;
     }
 

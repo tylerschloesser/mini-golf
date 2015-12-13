@@ -6,6 +6,7 @@
 
 enum GameState {
     DROP_BALL,
+    PREPARE_SHOT,
     PLAY,
 };
 
@@ -27,6 +28,7 @@ private:
     Line* shot_line;
 
     GameState state;
+    void set_state(GameState);
 public:
     Game(Renderer& renderer, Physics& physics, Course& course, Ball& ball);
     void run();

@@ -12,6 +12,9 @@ public:
     glm::vec2 acceleration;
 
     Ball(glm::vec2 position, glm::vec2 velocity, float radius);
+
+    void stop();
+    bool is_moving();
 };
 
 #endif // BALL_H

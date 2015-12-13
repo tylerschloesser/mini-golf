@@ -62,7 +62,7 @@ void Renderer::render() {
 
     for (Line* line : lines) {
         if (line->visible) {
-            glm::vec2 a = line->a, b = line->b;
+            glm::vec2 a = line->a + line->translate, b = line->b + line->translate;
             SDL_RenderDrawLine(sdl_renderer, a[0], a[1], b[0], b[1]);
         }
     }
