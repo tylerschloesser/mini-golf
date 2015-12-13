@@ -3,11 +3,15 @@
 
 #include <glm/vec2.hpp>
 
+#include "color.h"
+
 class Ball {
 public:
     glm::vec2 position;
     glm::vec2 velocity;
     float radius;
+
+    Color color;
 
     glm::vec2 acceleration;
 

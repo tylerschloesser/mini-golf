@@ -15,7 +15,7 @@ Game::Game(Renderer& renderer, Physics& physics, Course& course, Ball& ball) :
     frame_time = 1000 / TARGET_FPS;
 
     shot_line = new Line();
-    shot_line->color = Color::BLACK;
+    shot_line->color = Color::RED;
     renderer.add(shot_line);
 
     set_state(DROP_BALL);
@@ -125,7 +125,7 @@ void Game::handle_mouse_motion(SDL_MouseMotionEvent event) {
     if (state == DROP_BALL) {
         ball.position = glm::vec2(event.x, event.y) / renderer.scale;
     } else if (event.state & SDL_BUTTON_LMASK) {
-        if (state == PLAY) {
+        if (state == PLAY && !ball.is_moving()) {
             set_state(PREPARE_SHOT);
 
             shot_line->a = shot_line->b = glm::vec2(event.x, event.y);
